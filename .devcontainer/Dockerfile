@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 ARG V_SBT=1.3.8
-
+ARG V_DOTTY=0.22.0-RC1
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -48,7 +48,7 @@ RUN apt-get install -y --no-install-recommends \
     curl \
     sbt=${V_SBT}
 
-RUN curl -L --output /opt/dotty.tgz https://github.com/lampepfl/dotty/releases/download/0.22.0-RC1/dotty-0.22.0-RC1.tar.gz \
+RUN curl -L --output /opt/dotty.tgz https://github.com/lampepfl/dotty/releases/download/${V_DOTTY}/dotty-${V_DOTTY}.tar.gz \
     && cd /opt/ \
     && tar -xvvf dotty.tgz \
     && rm -rf dotty.tgz \
